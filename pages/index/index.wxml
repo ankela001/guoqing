@@ -1,0 +1,74 @@
+<view class="container">
+  <!-- 顶部标题区域 -->
+  <view class="header">
+    <view class="title-container">
+      <view class="title">迎国庆 换新颜</view>
+      <view class="subtitle-box">
+        <view class="subtitle-flag">2025国庆新头像火啦</view>
+      </view>
+    </view>
+    
+    <view class="main-wrapper">
+      <!-- 预览区域 - 添加边框和动画效果 -->
+      <view class="preview-container" style="border: 10rpx solid rgba(255,255,255,0.9);">
+        <image class="preview-image" src="{{selectedFrame}}" mode="aspectFit" animation="{{previewAnimation}}"></image>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="action-buttons">
+        <button class="action-btn" bindtap="chooseImage">获取头像</button>
+        <button class="action-btn" bindtap="takePhoto">相册拍照</button>
+        <button class="action-btn action-btn-primary" bindtap="saveAvatar">保存头像</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 头像框选项卡 - 增加内边距 -->
+  <view class="tab-container">
+    <view class="tabs">
+      <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">{{tabs[0]}}</view>
+      <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">{{tabs[1]}}</view>
+      <view class="tab-item {{currentTab === 2 ? 'active' : ''}}" bindtap="switchTab" data-index="2">{{tabs[2]}}</view>
+      <view class="tab-item {{currentTab === 3 ? 'active' : ''}}" bindtap="switchTab" data-index="3">{{tabs[3]}}</view>
+    </view>
+
+    <!-- 头像框列表 - 强调边框和选中效果 -->
+    <scroll-view class="frames-scroll" scroll-x="true" enhanced="true" show-scrollbar="false">
+      <view class="frames-list" animation="{{framesAnimation}}">
+        <view 
+          class="frame-item {{selectedFrameIndex === index ? 'active' : ''}}" 
+          wx:for="{{currentFrames}}" 
+          wx:key="index" 
+          bindtap="selectFrame" 
+          data-index="{{index}}"
+          style="border: {{selectedFrameIndex === index ? '4rpx solid #FF5E62' : '4rpx solid rgba(255,255,255,0.9)'}}"
+          animation="{{selectedFrameIndex === index ? animationData : ''}}"
+        >
+          <image class="frame-image" src="{{item.url}}" mode="aspectFit"></image>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 左右装饰 -->
+  <view class="decoration-left"></view>
+  <view class="decoration-right"></view>
+
+  <!-- 使用提示 - 增加视觉元素 -->
+  <view class="tips-container">
+    <view class="tips-title">使用提示</view>
+    <view class="tips-content">
+      <text>1. 点击"获取头像"选择或拍摄照片</text>
+      <text>2. 选择喜欢的国庆头像框样式</text>
+      <text>3. 在编辑页面调整头像位置和大小</text>
+      <text>4. 保存头像图片并设置为个人头像</text>
+    </view>
+  </view>
+
+  <!-- 底部装饰元素 -->
+  <view class="decoration-bottom"></view>
+
+  <view class="footer">
+    <text>献礼祖国生辰华诞 · 共庆伟大中国梦</text>
+  </view>
+</view> 

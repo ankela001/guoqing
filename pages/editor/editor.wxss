@@ -1,0 +1,219 @@
+/* pages/editor/editor.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0;
+  background-color: #f8f8f8;
+}
+
+.editor-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.canvas-container {
+  position: relative;
+  height: 680rpx;
+  width: 100%;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.avatar-editor {
+  position: relative;
+  width: 500rpx;
+  height: 500rpx;
+  margin: 0 auto;
+  border-radius: 8rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 20rpx rgba(0,0,0,0.15);
+}
+
+/* 用户头像包装器 - 确保头像居中显示 */
+.avatar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.avatar-layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 相框包装器 - 覆盖在头像上方 */
+.frame-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none; /* 允许触摸事件穿透到下层的头像 */
+  overflow: hidden; /* 确保相框不超出容器 */
+}
+
+.frame-image {
+  width: 102%; /* 稍微放大以避免边缘出现白边 */
+  height: 102%;
+  object-fit: cover; /* 修改为cover确保完全填充 */
+  position: absolute;
+  top: -1%;
+  left: -1%;
+}
+
+/* 隐藏所有滚动条 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+
+/* 工具区域样式 */
+.editor-tools {
+  flex: 1;
+  background-color: #fff;
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 -4rpx 10rpx rgba(0,0,0,0.05);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  color: #333;
+}
+
+.margin-top {
+  margin-top: 30rpx;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.slider-label {
+  width: 80rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.slider {
+  flex: 1;
+}
+
+.frames-scroll {
+  width: 100%;
+  white-space: nowrap;
+  margin-bottom: 30rpx;
+}
+
+.frames-list {
+  display: flex;
+  padding: 10rpx 0;
+}
+
+.frame-item {
+  margin-right: 20rpx;
+  padding: 6rpx;
+  background: rgba(0,0,0,0.03);
+  border-radius: 8rpx;
+  width: 130rpx;
+  height: 130rpx;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.frame-item.active {
+  border: 4rpx solid #E54B4B;
+  padding: 2rpx;
+}
+
+.frame-thumb {
+  width: 100%;
+  height: 100%;
+  border-radius: 6rpx;
+  object-fit: cover; /* 使用cover而非contain */
+}
+
+.action-buttons {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.reset-btn {
+  background: #fff;
+  color: #666;
+  border: 2rpx solid #ddd;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  padding: 15rpx 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+}
+
+.btn-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+
+.save-btn {
+  background: #E54B4B;
+  color: white;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  padding: 15rpx 30rpx;
+  width: 65%;
+}
+
+.tips {
+  padding: 20rpx 30rpx;
+  background: #f0f0f0;
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+}
+
+/* 隐藏的画布 */
+.avatar-canvas {
+  position: fixed;
+  width: 500rpx;
+  height: 500rpx;
+  left: -9999rpx; /* 移出可视区域但保持尺寸 */
+  top: -9999rpx;
+  background-color: #FFFFFF;
+  z-index: -1;
+} 

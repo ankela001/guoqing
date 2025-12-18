@@ -1,0 +1,44 @@
+/**app.wxss**/
+page {
+  background-color: #F6F6F6;
+  height: 100%;
+  font-size: 32rpx;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 30rpx;
+  position: relative;
+}
+
+button {
+  background: #E54B4B;
+  color: white;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  padding: 20rpx 40rpx;
+  margin: 20rpx 0;
+  border: none;
+}
+
+button::after {
+  border: none;
+}
+
+button.secondary {
+  background: #FFD25A;
+  color: #333;
+}
+
+button.outline {
+  background: transparent;
+  color: #E54B4B;
+  border: 2rpx solid #E54B4B;
+} 

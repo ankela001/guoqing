@@ -1,0 +1,62 @@
+<view class="container">
+  <view class="editor-container">
+    <view class="canvas-container">
+      <!-- 头像编辑预览区域 -->
+      <view class="avatar-editor">
+        <!-- 先显示用户头像（圆形剪裁） -->
+        <view class="avatar-wrapper">
+          <view class="avatar-layer" style="transform: translate({{avatarX}}px, {{avatarY}}px) scale({{avatarScale}});"
+                bindtouchstart="onTouchStart" bindtouchmove="onTouchMove">
+            <image class="user-avatar" src="{{avatarUrl}}" mode="aspectFill"></image>
+          </view>
+        </view>
+        
+        <!-- 再显示国旗相框（完全覆盖） -->
+        <view class="frame-wrapper">
+          <image class="frame-image" src="{{frameUrl}}" mode="aspectFill"></image>
+        </view>
+        
+        <!-- 绘制用的画布（隐藏） -->
+        <canvas type="2d" id="avatarCanvas" class="avatar-canvas" canvas-id="avatarCanvas"></canvas>
+      </view>
+    </view>
+
+    <!-- 编辑工具区域 -->
+    <view class="editor-tools">
+      <!-- 调整头像部分 -->
+      <view class="section-title">调整头像</view>
+      <view class="slider-container">
+        <text class="slider-label">缩放</text>
+        <slider class="slider" min="0.5" max="2" step="0.01" value="{{avatarScale}}" block-size="22" activeColor="#E54B4B" block-color="#E54B4B" show-value="{{false}}" bindchanging="onScaleChange"></slider>
+      </view>
+      
+      <!-- 选择头像框部分 -->
+      <view class="section-title margin-top">选择头像框</view>
+      <scroll-view class="frames-scroll" scroll-x="true" enhanced="true" show-scrollbar="false">
+        <view class="frames-list">
+          <view class="frame-item {{currentFrameIndex === index ? 'active' : ''}}" 
+                wx:for="{{frames}}" 
+                wx:key="index" 
+                bindtap="onFrameSelect" 
+                data-index="{{index}}">
+            <image class="frame-thumb" src="{{item.url}}" mode="aspectFill"></image>
+          </view>
+        </view>
+      </scroll-view>
+      
+      <!-- 底部操作按钮 -->
+      <view class="action-buttons">
+        <button class="reset-btn" bindtap="resetAvatar">
+          <image class="btn-icon" src="/static/image/ui/icon_reset.svg"></image>
+          <text>重置</text>
+        </button>
+        <button class="save-btn" bindtap="saveAvatar">保存头像</button>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部提示 -->
+  <view class="tips">
+    <text>提示：拖动头像可调整位置，使用滑块可缩放大小</text>
+  </view>
+</view> 
